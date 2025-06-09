@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binhitech - Growth, Engineered</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for easy theme management */
+        :root {
+            --primary-dark: #1E3A3F; /* From the logo's semicolon */
+            --primary-green: #3E8E41; /* From the logo's leaves */
+            --background-light: #F7F7F7; /* Textured white from the background */
+            --text-dark: #333333;
+            --text-light: #FFFFFF;
+            --border-light: #e0e0e0;
+            --section-padding: 6rem 2rem;
+        }
+
+        /* Basic Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-dark);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        section {
+            padding: var(--section-padding);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #666;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar ul li {
+            margin-left: 2rem;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: var(--primary-green);
+        }
+
+        /* CTA Button Style */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: var(--text-light);
+        }
+
+        .btn-primary:hover {
+            background-color: #357a38; /* A slightly darker green */
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        #hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 80vh;
+            padding: 2rem;
+        }
+
+        #hero .hero-content {
+            max-width: 800px;
+        }
+
+        #hero img {
+            max-width: 600px;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        /* Why Us Section */
+        #why-us .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(30, 58, 63, 0.1);
+        }
+
+        .feature-card .icon {
+            display: inline-block;
+            background-color: #e8f5e9; /* Light green background */
+            color: var(--primary-green);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            line-height: 70px;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card .icon svg {
+            width: 32px;
+            height: 32px;
+            vertical-align: middle;
+        }
+
+        /* Our Services Section */
+        #services {
+            background-color: #fff;
+        }
+        #services .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        #services .service-item {
+            padding: 1.5rem;
+        }
+
+        #services .service-item h3 {
+            color: var(--primary-green);
+        }
+
+        #services .service-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #services .service-item ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        #services .service-item ul li::before {
+            content: '✓';
+            color: var(--primary-green);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        #services .service-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(30, 58, 63, 0.1);
+        }
+
+
+        /* What is Binhitech Section */
+        #about {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        #about h2, #about h3 {
+            color: var(--text-light);
+        }
+
+        #about .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        #about .logo-icon {
+            height: 80px;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Contact Section */
+        #contact .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-light);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-light);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+        }
+        .contact-info strong {
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: #a0b4b7;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer .footer-logo img {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        footer .footer-links {
+            margin: 1.5rem 0;
+        }
+
+        footer .footer-links a {
+            color: #a0b4b7;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-links a:hover {
+            color: var(--text-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+
+            .navbar {
+                flex-direction: column;
+            }
+            .navbar ul {
+                padding-top: 1rem;
+            }
+            .navbar ul li {
+                margin: 0 0.75rem;
+            }
+
+            #services .service-grid, #contact .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            #services .service-image {
+                order: -1; /* Move image to top on mobile */
+                margin-bottom: 2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<header class="navbar">
+    <div class="logo">
+        <a href="#hero">
+            <img src="/images/logo-name.png" alt="Binhitech Logo">
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#about">What is Binhitech</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <img src="/images/logo-name-tagline.png" alt="Binhitech - Growth, Engineered">
+            <p style="font-size: 1.25rem; max-width: 500px; margin: 0 auto 2rem auto;">We architect cutting-edge software solutions that propel your business forward. Your story doesn't end; it evolves.</p>
+            <a href="#contact" class="btn btn-primary">Start Your Growth Journey</a>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Binhitech?</h2>
+                <p>We don't just build software. We engineer sustainable growth by blending technical precision with strategic foresight.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">
+                        <!-- Icon: Target/Precision -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>
+                    </div>
+                    <h3>Engineered Precision</h3>
+                    <p>Our solutions are meticulously crafted, ensuring robust, scalable, and efficient performance every time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <!-- Icon: Plant/Growth -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                    </div>
+                    <h3>Strategic Growth</h3>
+                    <p>We focus on your KPIs. Our technology is a tool to unlock new markets and accelerate your business goals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <!-- Icon: People/Partnership -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.228a4.5 4.5 0 00-1.897 1.897M18 18.72A7.5 7.5 0 119.75 10.5M18 18.72v-5.25m-3.75 5.25a7.5 7.5 0 10-7.5-7.5M3.75 10.5a7.5 7.5 0 1115 0" /></svg>
+                    </div>
+                    <h3>Collaborative Partnership</h3>
+                    <p>We become an extension of your team, working closely with you to understand and execute your vision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>A suite of services designed to plant the seeds of innovation and cultivate lasting success.</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-item">
+                    <h3>Custom Software Development</h3>
+                    <p>From web applications to enterprise systems, we build tailored software that solves your unique challenges.</p>
+                    <ul>
+                        <li>Web & Mobile App Development</li>
+                        <li>Enterprise Software Solutions</li>
+                        <li>API Integration & Development</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>AI & Data Analytics</h3>
+                    <p>Turn your data into your most valuable asset. We build intelligent systems that provide actionable insights.</p>
+                    <ul>
+                        <li>Machine Learning Models</li>
+                        <li>Business Intelligence Dashboards</li>
+                        <li>Predictive Analytics</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>Cloud & DevOps</h3>
+                    <p>Modernize your infrastructure for scalability, reliability, and speed with our cloud engineering expertise.</p>
+                    <ul>
+                        <li>Cloud Migration & Strategy</li>
+                        <li>CI/CD Pipeline Automation</li>
+                        <li>Infrastructure as Code (IaC)</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>Growth Marketing Tech</h3>
+                    <p>Leverage technology to amplify your marketing efforts, from automation platforms to customer data systems.</p>
+                    <ul>
+                        <li>Marketing Automation Setup</li>
+                        <li>Customer Data Platforms (CDP)</li>
+                        <li>MarTech Stack Integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Binhitech Section -->
+    <section id="about">
+        <div class="container about-content">
+            <img src="/images/logo.png" alt="Binhitech Icon" class="logo-icon">
+            <h2>A Semicolon is Not The End.</h2>
+            <p>In language and in code, a semicolon marks a pause, signifying that there's more to come. It connects two closely related ideas, creating a whole greater than its parts.</p>
+            <p>At Binhitech, we embody this spirit. We partner with businesses at crucial junctures, not to end their story, but to help them continue it—stronger, smarter, and ready for the next chapter of growth. The sprout from our semicolon is our promise: with us, your pause becomes a point of new beginning.</p>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Engineer Your Growth</h2>
+                <p>Ready to start the next chapter of your business? Reach out and let's discuss how we can help.</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>Fill out the form and our team will get back to you within 24 hours. Or, reach us directly through the channels below.</p>
+                    <p><strong>Email:</strong><br> <a href="mailto:hello@binhitech.com" style="color: var(--primary-green); text-decoration: none;">hello@binhitech.com</a></p>
+                    <p><strong>Address:</strong><br> 123 Innovation Drive,<br> Tech City, ST 54321</p>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How can we help?</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-logo">
+            <img src="/images/logo-name.png" alt="Binhitech Logo">
+        </div>
+        <div class="footer-links">
+            <a href="#why-us">Why Us</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>© 2024 Binhitech. All Rights Reserved. Growth, Engineered.</p>
+    </div>
+</footer>
+
+</body>
+</html>
