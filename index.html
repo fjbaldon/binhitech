@@ -1,518 +1,256 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binhitech - Growth, Engineered</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Feather Icons for UI elements -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
     <style>
-        /* CSS Variables for easy theme management */
-        :root {
-            --primary-dark: #1E3A3F; /* From the logo's semicolon */
-            --primary-green: #3E8E41; /* From the logo's leaves */
-            --background-light: #F7F7F7; /* Textured white from the background */
-            --text-dark: #333333;
-            --text-light: #FFFFFF;
-            --border-light: #e0e0e0;
-            --section-padding: 6rem 2rem;
+        /* Custom styles to complement Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* A very light gray for the body background */
         }
+        /* Define custom colors based on the logo for easier use with Tailwind */
+        .bg-binhi-dark { background-color: #1a3a53; }
+        .text-binhi-dark { color: #1a3a53; }
+        .bg-binhi-green { background-color: #5cb85c; }
+        .text-binhi-green { color: #5cb85c; }
+        .border-binhi-green { border-color: #5cb85c; }
+        .hover\:bg-binhi-green-dark:hover { background-color: #4a9d4a; }
 
-        /* Basic Reset and Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Smooth scroll for anchor links */
         html {
             scroll-behavior: smooth;
         }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        h1, h2, h3 {
-            color: var(--primary-dark);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        h1 { font-size: 3.5rem; }
-        h2 { font-size: 2.5rem; }
-        h3 { font-size: 1.5rem; }
-
-        p {
-            margin-bottom: 1rem;
-        }
-
-        section {
-            padding: var(--section-padding);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            margin-bottom: 0.5rem;
-        }
-
-        .section-header p {
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #666;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-light);
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .navbar .logo img {
-            height: 40px;
-        }
-
-        .navbar ul {
-            display: flex;
-            list-style: none;
-        }
-
-        .navbar ul li {
-            margin-left: 2rem;
-        }
-
-        .navbar ul li a {
-            text-decoration: none;
-            color: var(--primary-dark);
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .navbar ul li a:hover {
-            color: var(--primary-green);
-        }
-
-        /* CTA Button Style */
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-green);
-            color: var(--text-light);
-        }
-
-        .btn-primary:hover {
-            background-color: #357a38; /* A slightly darker green */
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        #hero {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 80vh;
-            padding: 2rem;
-        }
-
-        #hero .hero-content {
-            max-width: 800px;
-        }
-
-        #hero img {
-            max-width: 600px;
-            width: 100%;
-            margin-bottom: 2rem;
-        }
-
-        /* Why Us Section */
-        #why-us .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-light);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(30, 58, 63, 0.1);
-        }
-
-        .feature-card .icon {
-            display: inline-block;
-            background-color: #e8f5e9; /* Light green background */
-            color: var(--primary-green);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            line-height: 70px;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-card .icon svg {
-            width: 32px;
-            height: 32px;
-            vertical-align: middle;
-        }
-
-        /* Our Services Section */
-        #services {
-            background-color: #fff;
-        }
-        #services .service-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        #services .service-item {
-            padding: 1.5rem;
-        }
-
-        #services .service-item h3 {
-            color: var(--primary-green);
-        }
-
-        #services .service-item ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        #services .service-item ul li {
-            padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 0.5rem;
-        }
-
-        #services .service-item ul li::before {
-            content: '✓';
-            color: var(--primary-green);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        #services .service-image img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 8px 25px rgba(30, 58, 63, 0.1);
-        }
-
-
-        /* What is Binhitech Section */
-        #about {
-            background: var(--primary-dark);
-            color: var(--text-light);
-            text-align: center;
-        }
-
-        #about h2, #about h3 {
-            color: var(--text-light);
-        }
-
-        #about .about-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        #about .logo-icon {
-            height: 80px;
-            opacity: 0.8;
-            margin-bottom: 2rem;
-        }
-
-        /* Contact Section */
-        #contact .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            background: #fff;
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-light);
-        }
-
-        .contact-form .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-light);
-            border-radius: 5px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .contact-info p {
-            margin-bottom: 1.5rem;
-        }
-        .contact-info strong {
-            color: var(--primary-dark);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-dark);
-            color: #a0b4b7;
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        footer .footer-logo img {
-            height: 50px;
-            margin-bottom: 1rem;
-        }
-
-        footer .footer-links {
-            margin: 1.5rem 0;
-        }
-
-        footer .footer-links a {
-            color: #a0b4b7;
-            text-decoration: none;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
-        }
-
-        footer .footer-links a:hover {
-            color: var(--text-light);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-
-            .navbar {
-                flex-direction: column;
-            }
-            .navbar ul {
-                padding-top: 1rem;
-            }
-            .navbar ul li {
-                margin: 0 0.75rem;
-            }
-
-            #services .service-grid, #contact .contact-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            #services .service-image {
-                order: -1; /* Move image to top on mobile */
-                margin-bottom: 2rem;
-            }
-        }
-
     </style>
 </head>
-<body>
+<body class="text-gray-700">
 
-<!-- Navigation Bar -->
-<header class="navbar">
-    <div class="logo">
-        <a href="#hero">
-            <img src="images/logo-name.png" alt="Binhitech Logo">
+<!-- Header & Navigation Bar -->
+<header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-2">
+            <img src="images/logo.png"
+                 alt="Binhitech Logo"
+                 class="h-10 w-auto"
+                 onerror="this.onerror=null; this.src='https://placehold.co/100x40/1a3a53/ffffff?text=Binhitech';">
         </a>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="#why-us">Why Us</a></li>
-            <li><a href="#services">Our Services</a></li>
-            <li><a href="#about">What is Binhitech</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+            <a href="#why-us" class="text-gray-600 hover:text-binhi-dark font-medium transition-colors duration-300">Why Us</a>
+            <a href="#services" class="text-gray-600 hover:text-binhi-dark font-medium transition-colors duration-300">Our Services</a>
+            <a href="#about" class="text-gray-600 hover:text-binhi-dark font-medium transition-colors duration-300">What is Binhitech?</a>
+            <a href="#contact" class="bg-binhi-dark text-white hover:bg-opacity-90 px-5 py-2 rounded-full font-semibold shadow-md transition-all duration-300 transform hover:scale-105">
+                Contact Us
+            </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-600 hover:text-binhi-dark focus:outline-none">
+                <i data-feather="menu" class="h-6 w-6"></i>
+            </button>
+        </div>
     </nav>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+        <a href="#why-us" class="block py-3 px-6 text-gray-600 hover:bg-gray-50">Why Us</a>
+        <a href="#services" class="block py-3 px-6 text-gray-600 hover:bg-gray-50">Our Services</a>
+        <a href="#about" class="block py-3 px-6 text-gray-600 hover:bg-gray-50">What is Binhitech?</a>
+        <a href="#contact" class="block py-3 px-6 text-gray-600 hover:bg-gray-50">Contact Us</a>
+    </div>
 </header>
 
+<!-- Main Content -->
 <main>
     <!-- Hero Section -->
-    <section id="hero">
-        <div class="hero-content">
-            <img src="images/logo-name-tagline.png" alt="Binhitech - Growth, Engineered">
-            <p style="font-size: 1.25rem; max-width: 500px; margin: 0 auto 2rem auto;">We architect cutting-edge software solutions that propel your business forward. Your story doesn't end; it evolves.</p>
-            <a href="#contact" class="btn btn-primary">Start Your Growth Journey</a>
+    <section class="bg-white pt-16 pb-20 md:pt-24 md:pb-28">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto">
+                <img src="images/logo-name-tagline.png"
+                     alt="Binhitech: Growth, Engineered"
+                     class="h-32 md:h-40 mx-auto mb-8"
+                     onerror="this.onerror=null; this.src='https://placehold.co/400x160/1a3a53/ffffff?text=Binhitech';">
+
+                <h1 class="text-4xl md:text-6xl font-extrabold text-binhi-dark leading-tight mb-4">
+                    We Engineer Your Digital Growth
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+                    From innovative ideas to scalable software solutions, we provide the technical foundation for your business to flourish.
+                </p>
+                <div class="flex justify-center items-center space-x-4">
+                    <a href="#services" class="bg-binhi-green text-white hover:bg-binhi-green-dark px-8 py-4 rounded-full font-bold text-lg shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Explore Our Services
+                    </a>
+                    <a href="#contact" class="bg-gray-200 text-binhi-dark hover:bg-gray-300 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Get a Free Consultation
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Why Us Section -->
-    <section id="why-us">
-        <div class="container">
-            <div class="section-header">
-                <h2>Why Binhitech?</h2>
-                <p>We don't just build software. We engineer sustainable growth by blending technical precision with strategic foresight.</p>
+    <section id="why-us" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-binhi-dark">Why Partner with Binhitech?</h2>
+                <p class="text-lg text-gray-600 mt-2">We're more than developers; we're your dedicated growth engineers.</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="icon">
-                        <!-- Icon: Target/Precision -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                    <div class="bg-binhi-green text-white rounded-full h-12 w-12 flex items-center justify-center mb-4">
+                        <i data-feather="target" class="h-6 w-6"></i>
                     </div>
-                    <h3>Engineered Precision</h3>
-                    <p>Our solutions are meticulously crafted, ensuring robust, scalable, and efficient performance every time.</p>
+                    <h3 class="text-xl font-bold text-binhi-dark mb-2">Tailored Solutions</h3>
+                    <p class="text-gray-600">We don't do one-size-fits-all. Every line of code is crafted to meet your unique business goals.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="icon">
-                        <!-- Icon: Plant/Growth -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                    <div class="bg-binhi-green text-white rounded-full h-12 w-12 flex items-center justify-center mb-4">
+                        <i data-feather="code" class="h-6 w-6"></i>
                     </div>
-                    <h3>Strategic Growth</h3>
-                    <p>We focus on your KPIs. Our technology is a tool to unlock new markets and accelerate your business goals.</p>
+                    <h3 class="text-xl font-bold text-binhi-dark mb-2">Proven Expertise</h3>
+                    <p class="text-gray-600">Our team consists of vetted experts in cutting-edge technologies, ready to tackle any challenge.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="icon">
-                        <!-- Icon: People/Partnership -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.228a4.5 4.5 0 00-1.897 1.897M18 18.72A7.5 7.5 0 119.75 10.5M18 18.72v-5.25m-3.75 5.25a7.5 7.5 0 10-7.5-7.5M3.75 10.5a7.5 7.5 0 1115 0" /></svg>
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                    <div class="bg-binhi-green text-white rounded-full h-12 w-12 flex items-center justify-center mb-4">
+                        <i data-feather="trending-up" class="h-6 w-6"></i>
                     </div>
-                    <h3>Collaborative Partnership</h3>
-                    <p>We become an extension of your team, working closely with you to understand and execute your vision.</p>
+                    <h3 class="text-xl font-bold text-binhi-dark mb-2">Partners in Growth</h3>
+                    <p class="text-gray-600">Your success is our success. We align our strategy with your long-term growth objectives.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                    <div class="bg-binhi-green text-white rounded-full h-12 w-12 flex items-center justify-center mb-4">
+                        <i data-feather="shield" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-binhi-dark mb-2">Transparent Process</h3>
+                    <p class="text-gray-600">We maintain clear communication and full transparency throughout the entire development lifecycle.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Our Services Section -->
-    <section id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Services</h2>
-                <p>A suite of services designed to plant the seeds of innovation and cultivate lasting success.</p>
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-binhi-dark">Our Services</h2>
+                <p class="text-lg text-gray-600 mt-2">A suite of services designed to build, scale, and innovate.</p>
             </div>
-            <div class="service-grid">
-                <div class="service-item">
-                    <h3>Custom Software Development</h3>
-                    <p>From web applications to enterprise systems, we build tailored software that solves your unique challenges.</p>
-                    <ul>
-                        <li>Web & Mobile App Development</li>
-                        <li>Enterprise Software Solutions</li>
-                        <li>API Integration & Development</li>
-                    </ul>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 hover:border-binhi-green transition-colors duration-300">
+                    <i data-feather="layout" class="h-10 w-10 text-binhi-green mb-4"></i>
+                    <h3 class="text-2xl font-bold text-binhi-dark mb-3">Custom Software Development</h3>
+                    <p class="text-gray-600">Bespoke applications built from the ground up to solve your specific business problems and drive efficiency.</p>
                 </div>
-                <div class="service-item">
-                    <h3>AI & Data Analytics</h3>
-                    <p>Turn your data into your most valuable asset. We build intelligent systems that provide actionable insights.</p>
-                    <ul>
-                        <li>Machine Learning Models</li>
-                        <li>Business Intelligence Dashboards</li>
-                        <li>Predictive Analytics</li>
-                    </ul>
+                <!-- Service Card 2 -->
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 hover:border-binhi-green transition-colors duration-300">
+                    <i data-feather="cloud-lightning" class="h-10 w-10 text-binhi-green mb-4"></i>
+                    <h3 class="text-2xl font-bold text-binhi-dark mb-3">Cloud Solutions & DevOps</h3>
+                    <p class="text-gray-600">Leverage the power of the cloud with our architecture, migration, and automation services for ultimate scalability.</p>
                 </div>
-                <div class="service-item">
-                    <h3>Cloud & DevOps</h3>
-                    <p>Modernize your infrastructure for scalability, reliability, and speed with our cloud engineering expertise.</p>
-                    <ul>
-                        <li>Cloud Migration & Strategy</li>
-                        <li>CI/CD Pipeline Automation</li>
-                        <li>Infrastructure as Code (IaC)</li>
-                    </ul>
+                <!-- Service Card 3 -->
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 hover:border-binhi-green transition-colors duration-300">
+                    <i data-feather="cpu" class="h-10 w-10 text-binhi-green mb-4"></i>
+                    <h3 class="text-2xl font-bold text-binhi-dark mb-3">AI & Machine Learning</h3>
+                    <p class="text-gray-600">Integrate intelligent solutions to automate processes, gain insights from data, and create smarter products.</p>
                 </div>
-                <div class="service-item">
-                    <h3>Growth Marketing Tech</h3>
-                    <p>Leverage technology to amplify your marketing efforts, from automation platforms to customer data systems.</p>
-                    <ul>
-                        <li>Marketing Automation Setup</li>
-                        <li>Customer Data Platforms (CDP)</li>
-                        <li>MarTech Stack Integration</li>
-                    </ul>
+                <!-- Service Card 4 -->
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 hover:border-binhi-green transition-colors duration-300">
+                    <i data-feather="figma" class="h-10 w-10 text-binhi-green mb-4"></i>
+                    <h3 class="text-2xl font-bold text-binhi-dark mb-3">UI/UX Design</h3>
+                    <p class="text-gray-600">Crafting intuitive, engaging, and beautiful user experiences that delight your customers and drive adoption.</p>
+                </div>
+                <!-- Service Card 5 -->
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 hover:border-binhi-green transition-colors duration-300">
+                    <i data-feather="smartphone" class="h-10 w-10 text-binhi-green mb-4"></i>
+                    <h3 class="text-2xl font-bold text-binhi-dark mb-3">Mobile App Development</h3>
+                    <p class="text-gray-600">Building high-performance native and cross-platform mobile apps for both iOS and Android platforms.</p>
+                </div>
+                <!-- Service Card 6 -->
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 hover:border-binhi-green transition-colors duration-300">
+                    <i data-feather="bar-chart-2" class="h-10 w-10 text-binhi-green mb-4"></i>
+                    <h3 class="text-2xl font-bold text-binhi-dark mb-3">Data Analytics & BI</h3>
+                    <p class="text-gray-600">Turn your raw data into actionable insights with powerful dashboards and business intelligence tools.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- What is Binhitech Section -->
-    <section id="about">
-        <div class="container about-content">
-            <img src="images/logo.png" alt="Binhitech Icon" class="logo-icon">
-            <h2>A Semicolon is Not The End.</h2>
-            <p>In language and in code, a semicolon marks a pause, signifying that there's more to come. It connects two closely related ideas, creating a whole greater than its parts.</p>
-            <p>At Binhitech, we embody this spirit. We partner with businesses at crucial junctures, not to end their story, but to help them continue it—stronger, smarter, and ready for the next chapter of growth. The sprout from our semicolon is our promise: with us, your pause becomes a point of new beginning.</p>
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                <!-- Image -->
+                <div class="w-full md:w-1/2">
+                    <img src="images/logo-name.png"
+                         alt="Binhitech Brand Mark"
+                         class="rounded-xl shadow-2xl w-full max-w-md mx-auto"
+                         onerror="this.onerror=null; this.src='https://placehold.co/500x300/1a3a53/ffffff?text=Binhitech';">
+                </div>
+                <!-- Text Content -->
+                <div class="w-full md:w-1/2 text-center md:text-left">
+                    <span class="font-bold text-binhi-green">OUR PHILOSOPHY</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-binhi-dark mt-2 mb-4">The Semicolon and the Sprout</h2>
+                    <p class="text-lg text-gray-600 mb-4">
+                        In programming, a semicolon often marks the end of a statement. For us, it represents a pause, a moment of reflection before the next great thing begins. It's a pivot point.
+                    </p>
+                    <p class="text-lg text-gray-600">
+                        The sprout emerging from it symbolizes what follows: **growth**. At Binhitech, we engineer these pivotal moments for your business, turning technological challenges into opportunities for unprecedented growth. We build the "what's next."
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Contact Us Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Let's Engineer Your Growth</h2>
-                <p>Ready to start the next chapter of your business? Reach out and let's discuss how we can help.</p>
+    <section id="contact" class="py-20 bg-binhi-dark text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Ready to Grow?</h2>
+                <p class="text-lg text-gray-300 mt-2">Let's talk about your next project. Reach out and let's build something amazing together.</p>
             </div>
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h3>Get in Touch</h3>
-                    <p>Fill out the form and our team will get back to you within 24 hours. Or, reach us directly through the channels below.</p>
-                    <p><strong>Email:</strong><br> <a href="mailto:hello@binhitech.com" style="color: var(--primary-green); text-decoration: none;">hello@binhitech.com</a></p>
-                    <p><strong>Address:</strong><br> VVVJ+RXG, Calape, 6328 Bohol<br></p>
-                </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
+            <div class="max-w-2xl mx-auto bg-white/10 p-8 rounded-xl backdrop-blur-sm">
+                <form action="#" method="POST">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-200">Your Name</label>
+                            <input type="text" id="name" name="name" class="w-full bg-white/20 border border-white/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-binhi-green transition" placeholder="John Doe" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-200">Your Email</label>
+                            <input type="email" id="email" name="email" class="w-full bg-white/20 border border-white/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-binhi-green transition" placeholder="john.doe@example.com" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="mb-6">
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-200">Your Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full bg-white/20 border border-white/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-binhi-green transition" placeholder="Tell us about your project..." required></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="message">How can we help?</label>
-                        <textarea id="message" name="message" required></textarea>
+                    <div class="text-center">
+                        <button type="submit" class="bg-binhi-green text-white hover:bg-binhi-green-dark px-10 py-4 rounded-full font-bold text-lg shadow-lg transition-all duration-300 transform hover:scale-105">
+                            Send Message
+                        </button>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                 </form>
             </div>
         </div>
@@ -520,20 +258,75 @@
 </main>
 
 <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="footer-logo">
-            <img src="images/logo-name.png" alt="Binhitech Logo">
+<footer class="bg-gray-800 text-gray-300">
+    <div class="container mx-auto px-6 py-12">
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- About -->
+            <div class="col-span-3 md:col-span-1">
+                <a href="#" class="flex items-center space-x-2 mb-4">
+                    <img src="images/logo.png"
+                         alt="Binhitech Logo"
+                         class="h-10 w-auto"
+                         onerror="this.onerror=null; this.src='https://placehold.co/100x40/ffffff/1a3a53?text=Binhitech';">
+                    <span class="text-2xl font-bold text-white">Binhitech</span>
+                </a>
+                <p class="text-gray-400">Growth, Engineered.</p>
+            </div>
+
+            <!-- Links -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Navigate</h4>
+                <ul>
+                    <li class="mb-2"><a href="#why-us" class="hover:text-white">Why Us</a></li>
+                    <li class="mb-2"><a href="#services" class="hover:text-white">Services</a></li>
+                    <li class="mb-2"><a href="#about" class="hover:text-white">About</a></li>
+                    <li class="mb-2"><a href="#contact" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Get in Touch</h4>
+                <p class="mb-2">Calape, Bohol, Philippines</p>
+                <p class="mb-2">
+                    <a href="mailto:hello@binhitech.com" class="hover:text-white">hello@binhitech.com</a>
+                </p>
+                <p class="mb-2">
+                    <a href="tel:+1234567890" class="hover:text-white">(+63) 123-456-7890</a>
+                </p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-white"><i data-feather="twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i data-feather="linkedin"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i data-feather="github"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="footer-links">
-            <a href="#why-us">Why Us</a>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Binhitech. All Rights Reserved.</p>
         </div>
-        <p>© 2025 Binhitech. All Rights Reserved. Growth, Engineered.</p>
     </div>
 </footer>
 
+
+<script>
+    // JavaScript for mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when a link is clicked
+    const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+    for (let link of mobileMenuLinks) {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    }
+
+    // Feather Icons Initialization
+    feather.replace();
+</script>
 </body>
 </html>
